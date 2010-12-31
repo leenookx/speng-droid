@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+    <ScrollView android:id="@+id/submit_scrollview" 
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent">
+        <LinearLayout android:id="@+id/submit_layout" 
+                android:layout_width="fill_parent" 
+                android:layout_height="fill_parent" android:orientation="vertical">
+            <TextView android:id="@+id/submit_link_url_label"
+                        android:text="@string/submit_link_url_label" 
+                        android:layout_width="wrap_content" 
+                        android:layout_height="wrap_content"
+                        android:padding="4dip"
+                        />
+            <EditText android:id="@+id/submit_link_url"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="3"
+                        android:inputType="text|textMultiLine|textCapSentences"
+                        android:gravity="top|left"
+                        />
+            <TextView android:id="@+id/submit_link_description_label" 
+                        android:text="@string/submit_link_description_label"
+                        android:layout_width="wrap_content" 
+                        android:layout_height="wrap_content"
+                        android:padding="4dip"
+                        />
+            <EditText android:id="@+id/submit_link_description"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="3"
+                        android:inputType="text|textMultiLine|textCapSentences"
+                        />
+            <TextView android:id="@+id/submit_link_keywords_label"
+                        android:text="@string/submit_link_keywords_label"
+                        android:layout_width="wrap_content" 
+                        android:layout_height="wrap_content"
+                        android:padding="4dip"
+                        />
+            <EditText android:id="@+id/submit_link_keywords"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="3"
+                        android:inputType="text|textMultiLine|textCapSentences"
+                        />
+            <Button android:id="@+id/submit_link_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/submit_button"
+                        />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
