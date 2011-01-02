@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<EditTextPreference android:name="URL"
-	        android:summary="URL"
-	        android:defaultValue="Nothing"
+	        android:summary="Where to find the Spengler installation."
+	        android:defaultValue="http://localhost:3000"
 	        android:title="URL"
 	        android:key="editTextPref" />
     <EditTextPreference android:name="auth_code"
-            android:summary="Authentication Code"
-            android:defaultValue="Nothing"
-            android:title="Code"
+            android:summary="Your unique authentication code."
+            android:defaultValue="abc123"
+            android:title="Authentication Code"
             android:key="editTextPref" />
 </PreferenceScreen>
