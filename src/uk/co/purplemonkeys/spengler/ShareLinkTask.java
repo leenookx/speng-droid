@@ -39,15 +39,17 @@ class ShareLinkTask extends AsyncTask<Void, Void, Object>
     private String _url;
     private String _description;
     private String _keywords;
+    private String _title;
     private DefaultHttpClient mClient = createGzipHttpClient();
     
     String _mUserError = "Error creating submission. Please try again.";
    
-    ShareLinkTask(String url, String description, String keywords)
+    ShareLinkTask(String url, String description, String keywords, String title)
     {
     	_url = url;
     	_description = description;
     	_keywords = keywords;
+    	_title = title;
     }
    
     @Override
@@ -65,10 +67,11 @@ class ShareLinkTask extends AsyncTask<Void, Void, Object>
         	sub.put("url", _url);
         	sub.put("description", _description);
         	sub.put("keywords", _keywords);
+        	sub.put("title", _title)
         	
         	post_params.put("links", sub);
         	
-        	HttpPost httppost = new HttpPost("http://192.168.230.178:3000/links");
+        	HttpPost httppost = new HttpPost("http://192.168.230.180:3000/links");
         	
         	// The progress dialog is non-cancelable, so set a shorter timeout than system's
         	HttpParams params = httppost.getParams();
@@ -84,8 +87,10 @@ class ShareLinkTask extends AsyncTask<Void, Void, Object>
         	HttpResponse response = mClient.execute(httppost);
         	String status = response.getStatusLine().toString();
             if (!status.contains("OK"))
+            {
             	throw new HttpException(status);
-           
+            }
+            
             entity = response.getEntity();
 
             BufferedReader in = new BufferedReader(new InputStreamReader(entity.getContent()));

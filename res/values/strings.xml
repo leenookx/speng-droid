@@ -7,4 +7,5 @@
 <string name="submit_link_keywords_label">Keywords</string>
 <string name="submit_button">Submit</string>
 <string name="error_toast">Error! Don\'t panic!</string>
+<string name="submit_link_title_label">Title</string>
 </resources>

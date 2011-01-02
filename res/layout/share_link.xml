@@ -22,6 +22,18 @@
                         android:inputType="text|textMultiLine|textCapSentences"
                         android:gravity="top|left"
                         />
+            <TextView android:id="@+id/submit_link_title_label" 
+                        android:text="@string/submit_link_title_label"
+                        android:layout_width="wrap_content" 
+                        android:layout_height="wrap_content"
+                        android:padding="4dip"
+                        />
+            <EditText android:id="@+id/submit_link_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="2"
+                        android:inputType="text|textMultiLine|textCapSentences"
+                        />
             <TextView android:id="@+id/submit_link_description_label" 
                         android:text="@string/submit_link_description_label"
                         android:layout_width="wrap_content" 

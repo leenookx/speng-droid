@@ -25,6 +25,7 @@ public class ShareLink extends Activity
         	Bundle extras = getIntent().getExtras();
         	if (extras != null) 
         	{
+        		Intent i = getIntent();
         		String url = extras.getString(Intent.EXTRA_TEXT);
         		final EditText submitLinkUrl = (EditText) findViewById(R.id.submit_link_url);
         		submitLinkUrl.setText(url);
