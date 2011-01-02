@@ -2,17 +2,26 @@ package uk.co.purplemonkeys.spengler;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class SpengDroid extends Activity {
+public class SpengDroid extends Activity 
+{
+	SharedPreferences preferences;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        // Initialise preferences
+		preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
     
     @Override

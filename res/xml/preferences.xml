@@ -4,10 +4,10 @@
 	        android:summary="Where to find the Spengler installation."
 	        android:defaultValue="http://localhost:3000"
 	        android:title="URL"
-	        android:key="editTextPref" />
+	        android:key="pref_url" />
     <EditTextPreference android:name="auth_code"
             android:summary="Your unique authentication code."
             android:defaultValue="abc123"
             android:title="Authentication Code"
-            android:key="editTextPref" />
+            android:key="pref_auth_code" />
 </PreferenceScreen>

@@ -31,8 +31,10 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -121,9 +123,13 @@ public class ShareLink extends Activity
         	
             try 
             {
+            	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+            	String url = prefs.getString("pref_url", "http://localhost:3000");
+            	String auth_code = prefs.getString("pref_auth_code", "abc123");
+
             	// Construct data
             	JSONObject post_params = new JSONObject();
-            	post_params.put("auth_code", "abc123");
+            	post_params.put("auth_code", auth_code);
             	
             	JSONObject sub = new JSONObject();
             	sub.put("url", _url);
@@ -133,7 +139,7 @@ public class ShareLink extends Activity
             	
             	post_params.put("links", sub);
             	
-            	HttpPost httppost = new HttpPost("http://192.168.230.180:3000/links");
+            	HttpPost httppost = new HttpPost(url + "/links");
             	
             	// The progress dialog is non-cancelable, so set a shorter timeout than system's
             	HttpParams params = httppost.getParams();
