@@ -3,17 +3,20 @@ package uk.co.purplemonkeys.spengler;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class SpengDroid extends Activity 
 {
 	SharedPreferences preferences;
-
+	String version_info;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,17 @@ public class SpengDroid extends Activity
         
         // Initialise preferences
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		
+		try
+		{
+			PackageManager pm = getPackageManager();
+			PackageInfo pi = pm.getPackageInfo("uk.co.purplemonkeys.spengler", 0);
+			version_info = "SpengDroid " + pi.versionName;
+		}
+		catch (NameNotFoundException e)
+		{
+			version_info = "Couldn't determine version info.";
+		}
     }
     
     @Override
@@ -40,7 +54,7 @@ public class SpengDroid extends Activity
     			startActivity(new Intent(this, Preferences.class));
     			return true;
     		case R.id.about_menu_id:
-    			Common.showAlertMessage(this, "SpengDroid v0.0.0");
+    			Common.showAlertMessage(this, version_info);
     			return true;
 			default:
 				break;
