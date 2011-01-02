@@ -19,6 +19,9 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".Preferences"
+                    android:label="@string/set_preferences"/>
     </application>
     
     <uses-sdk android:minSdkVersion="7" />
