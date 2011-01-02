@@ -39,6 +39,9 @@ public class SpengDroid extends Activity
     		case R.id.preferences_menu_id:
     			startActivity(new Intent(this, Preferences.class));
     			return true;
+    		case R.id.about_menu_id:
+    			Common.showAlertMessage(this, "SpengDroid v0.0.0");
+    			return true;
 			default:
 				break;
     	}

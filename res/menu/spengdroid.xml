@@ -3,6 +3,13 @@
     <group android:id="@+id/MAIN_MENU">
         <item android:id="@+id/preferences_menu_id"
             android:title="@string/menu_preferences"
-            android:alphabeticShortcut="p" />
+            android:alphabeticShortcut="p"
+            android:icon="@android:drawable/ic_menu_preferences"
+            />
+        <item android:id="@+id/about_menu_id"
+            android:title="@string/menu_about"
+            android:alphabeticShortcut="a"
+            android:icon="@android:drawable/ic_menu_info_details"
+            />
     </group>
 </menu>

@@ -22,21 +22,20 @@ public class Common
 		t.show();
 	}
 	
-	static void showErrorAlert(Context c, String error)
+	static void showAlertMessage(Context c, String message)
 	{
         // Create the alert box
         AlertDialog.Builder alertbox = new AlertDialog.Builder(c);
 
         // Set the message to display
-        alertbox.setMessage("This is an alert box.");
+        alertbox.setMessage( message );
 
         // Add a neutral button to the alert box and assign a click listener
         alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
-				// TODO Auto-generated method stub
-				
+				// We don't really care about this here...
 			}
         });
 
