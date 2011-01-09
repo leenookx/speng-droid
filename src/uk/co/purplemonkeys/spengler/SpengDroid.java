@@ -1,5 +1,6 @@
 package uk.co.purplemonkeys.spengler;
 
+import uk.co.purplemonkeys.common.Common;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -54,7 +55,7 @@ public class SpengDroid extends Activity
     			startActivity(new Intent(this, Preferences.class));
     			return true;
     		case R.id.about_menu_id:
-    			Common.showAlertMessage(this, version_info);
+    			Common.ShowAlertMessage(this, version_info);
     			return true;
 			default:
 				break;

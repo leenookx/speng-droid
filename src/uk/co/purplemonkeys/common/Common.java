@@ -1,4 +1,4 @@
-package uk.co.purplemonkeys.spengler;
+package uk.co.purplemonkeys.common;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import uk.co.purplemonkeys.spengler.R;
+
 public class Common 
 {
-	static void showErrorToast(String error, int duration, Context context) 
+	public static void ShowErrorToast(String error, int duration, Context context) 
 	{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		Toast t = new Toast(context);
@@ -22,7 +24,7 @@ public class Common
 		t.show();
 	}
 	
-	static void showAlertMessage(Context c, String message)
+	public static void ShowAlertMessage(Context c, String message)
 	{
         // Create the alert box
         AlertDialog.Builder alertbox = new AlertDialog.Builder(c);
