@@ -2,12 +2,23 @@
 <resources>
     <string name="hello">Hello World, SpengDroid!</string>
     <string name="app_name">SpengDroid</string>
-<string name="submit_link_url_label">URL</string>
-<string name="submit_link_description_label">Description</string>
-<string name="submit_link_keywords_label">Keywords</string>
-<string name="submit_button">Submit</string>
-<string name="error_toast">Error! Don\'t panic!</string>
-<string name="submit_link_title_label">Title</string>
-<string name="menu_preferences">Preferences</string>
-<string name="menu_about">About</string>
+    <string name="submit_link_url_label">URL</string>
+    <string name="submit_link_description_label">Description</string>
+    <string name="submit_link_keywords_label">Keywords</string>
+    <string name="submit_button">Submit</string>
+    <string name="error_toast">Error! Don\'t panic!</string>
+    <string name="submit_link_title_label">Title</string>
+    <string name="menu_preferences">Preferences</string>
+    <string name="menu_about">About</string>
+
+    <string name="crash_notif_ticker_text">Unexpected error, please send a report...</string>
+    <string name="crash_notif_title">CrashTest has crashed...</string>
+    <string name="crash_notif_text">Please click here to help fix the issue.</string>
+        
+    <string name="crash_dialog_title">CrashTest has crashed</string>
+    <string name="crash_dialog_text">An unexpected error occurred forcing the
+        application to stop. Please help us fix this by sending us error data,
+        all you have to do is click \'OK\'.</string>
+    <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
+    <string name="crash_dialog_ok_toast">Thank you !</string>
 </resources>
