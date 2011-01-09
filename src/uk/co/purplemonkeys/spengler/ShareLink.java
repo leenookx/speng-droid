@@ -85,7 +85,7 @@ public class ShareLink extends Activity
     	final EditText urlText = (EditText) findViewById(R.id.submit_link_url);
     	if ("".equals(urlText.getText())) 
     	{
-    		Common.ShowErrorToast("Please provide a URL.", Toast.LENGTH_LONG, this);
+    		Common.ShowErrorToast(getApplicationContext(), "Please provide a URL.", Toast.LENGTH_LONG);
     		return false;
     	}
     	
@@ -243,6 +243,15 @@ public class ShareLink extends Activity
         public void onPostExecute(Object result) 
         {
         	finish();
+        	
+        	if (result != null)
+        	{
+        		Common.ShowErrorToast(getApplicationContext(), "Spengalised", Toast.LENGTH_SHORT);
+        	}
+        	else
+        	{
+        		Common.ShowErrorToast(getApplicationContext(), "Spengalisation failed!", Toast.LENGTH_LONG);
+        	}
         }        
     }
 }

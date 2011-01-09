@@ -3,7 +3,6 @@ package uk.co.purplemonkeys.common;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,16 +11,11 @@ import uk.co.purplemonkeys.spengler.R;
 
 public class Common 
 {
-	public static void ShowErrorToast(String error, int duration, Context context) 
+	public static void ShowErrorToast(Context context, String error, int duration) 
 	{
-		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		Toast t = new Toast(context);
-		t.setDuration(duration);
-		View v = inflater.inflate(R.layout.error_toast, null);
-		TextView errorMessage = (TextView) v.findViewById(R.id.errorMessage);
-		errorMessage.setText(error);
-		t.setView(v);
-		t.show();
+		Toast toast = Toast.makeText(context, error, duration);
+		toast.setDuration( duration );
+		toast.show();
 	}
 	
 	public static void ShowAlertMessage(Context c, String message)
