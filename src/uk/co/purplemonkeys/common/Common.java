@@ -3,11 +3,7 @@ package uk.co.purplemonkeys.common;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import uk.co.purplemonkeys.spengler.R;
 
 public class Common 
 {

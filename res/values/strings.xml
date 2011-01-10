@@ -21,4 +21,7 @@
         all you have to do is click \'OK\'.</string>
     <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
     <string name="crash_dialog_ok_toast">Thank you !</string>
+    <string name="app_feed_service_name">Feed Reader Service</string>
+    <string name="feed_retriever_err_unspecified">Unspecified Error</string>
+    <string name="feed_retriever_err_unspecified_no_details">Unspecified, no details</string>
 </resources>
