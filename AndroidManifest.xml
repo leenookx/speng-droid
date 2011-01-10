@@ -30,8 +30,6 @@
                     android:launchMode="singleInstance"
                     android:excludeFromRecents="true"
                     android:finishOnTaskLaunch="true" />
-                    
-        <service android:name=".services.FeedRetrieverService" android:label="@string/app_feed_service_name" />
     </application>
     
     <uses-sdk android:minSdkVersion="7" />
