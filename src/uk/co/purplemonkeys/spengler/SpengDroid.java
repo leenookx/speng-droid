@@ -34,6 +34,7 @@ import com.sun.syndication.io.XmlReader;
 
 public class SpengDroid extends Activity 
 {
+	private final static String TAG = "SpengDroid";
 	private SharedPreferences preferences;
 	private String version_info;
 	private ArrayAdapter<String> adapter = null;
@@ -105,7 +106,11 @@ public class SpengDroid extends Activity
     
     private void getRSS()
     {
-    	String rss = "http://192.168.230.183:3000/user/feed/abc123";
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+    	String url = prefs.getString("pref_url", "http://localhost:3000");
+    	String auth_code = prefs.getString("pref_auth_code", "abc123");
+    	
+    	String rss = url + "/user/feed/" + auth_code;
     	
     	Common.ShowErrorToast(getApplicationContext(), "Retrieving user feed", Toast.LENGTH_SHORT);
     	URL feedUrl;
@@ -130,22 +135,22 @@ public class SpengDroid extends Activity
     	catch (MalformedURLException e)
     	{
     		Toast.makeText(this, "MalformedURLException", Toast.LENGTH_SHORT);
-    		e.printStackTrace();
+    		Log.e(TAG, e.toString());
     	}
     	catch (IllegalArgumentException e)
     	{
     		Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT);
-    		e.printStackTrace();
+    		Log.e(TAG, e.toString());
     	}
     	catch (FeedException e)
     	{
     		Toast.makeText(this, "FeedException", Toast.LENGTH_SHORT);
-    		e.printStackTrace();
+    		Log.e(TAG, e.toString());
     	}
     	catch (IOException e)
     	{
     		Toast.makeText(this, "IOException", Toast.LENGTH_SHORT);
-    		e.printStackTrace();
+    		Log.e(TAG, e.toString());
     	}
     }
 }
