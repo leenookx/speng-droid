@@ -7,12 +7,16 @@ import java.util.Iterator;
 import java.util.List;
 
 import uk.co.purplemonkeys.common.Common;
+import uk.co.purplemonkeys.spengler.providers.Article.Articles;
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -24,6 +28,7 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -40,10 +45,17 @@ public class SpengDroid extends Activity
 	private ArrayAdapter<String> adapter = null;
 	private ListView listView;
 	private Button goButton;
+	private String[] PROJECTION = new String[] 
+	                                         {
+	                                             Articles._ID, 
+	                                             Articles.TITLE,
+	                                             Articles.URL
+	                                         };
 	
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) 
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
@@ -70,14 +82,11 @@ public class SpengDroid extends Activity
         		getRSS();
         	}
         });
-		
-		listView = (ListView) this.findViewById(R.id.ListView);
-		adapter = new ArrayAdapter<String>(this, R.layout.main, R.id.ListView);
-		listView.setAdapter(adapter);
     }
     
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) 
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.spengdroid, menu);
         return true;
@@ -115,22 +124,30 @@ public class SpengDroid extends Activity
     	Common.ShowErrorToast(getApplicationContext(), "Retrieving user feed", Toast.LENGTH_SHORT);
     	URL feedUrl;
     	
+    	Context _appContext = getApplicationContext();
+    	
     	try
     	{
-    		Log.d("DEBUG", "Entered:" + rss);
+    		// Clear out all of the existing articles.
+    		_appContext.getContentResolver().delete(Articles.CONTENT_URI, null, null);
+    		
     		feedUrl = new URL(rss);
     		SyndFeedInput input = new SyndFeedInput();
     		SyndFeed feed = input.build(new XmlReader(feedUrl));
-    		List entries = feed.getEntries();
-    		Toast.makeText(this, "#Feeds retrieved: " + entries.size(), Toast.LENGTH_SHORT);
-    		Iterator iterator = entries.listIterator();
+    		List<SyndEntry> entries = feed.getEntries();
+    		Iterator<SyndEntry> iterator = entries.listIterator();
+    		int i = 0;
     		while (iterator.hasNext())
     		{
-    			SyndEntry ent = (SyndEntry) iterator.next();
-    			String title = ent.getTitle();
-    			adapter.add(title);
+    			SyndEntry entry = (SyndEntry)iterator.next();
+    			
+				ContentValues cv = new ContentValues();
+				cv.put(Articles._ID, i++);
+				cv.put(Articles.TITLE, entry.getTitle());
+				cv.put(Articles.URL, entry.getUri());
+				
+				_appContext.getContentResolver().insert(Articles.CONTENT_URI, cv);
     		}
-    		adapter.notifyDataSetChanged();
     	}
     	catch (MalformedURLException e)
     	{
