@@ -17,7 +17,8 @@ public class ArticlesList extends ListActivity
 	private String[] ARTICLES_PROJECTION = new String[] 
            {
                Articles._ID, 
-               Articles.TITLE
+               Articles.TITLE,
+               Articles.PAGE_URL
        	};
 	private Context _context;
 	
@@ -38,7 +39,7 @@ public class ArticlesList extends ListActivity
         
         Cursor articlesCursor = (Cursor) l.getAdapter().getItem(position);
 
-    	int f1 = articlesCursor.getColumnIndex(Articles.URL);
+    	int f1 = articlesCursor.getColumnIndex(Articles.PAGE_URL);
     	String article_url = articlesCursor.getString( f1 );
         
         Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(article_url));

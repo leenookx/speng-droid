@@ -48,7 +48,7 @@ public class SpengDroid extends TabActivity
 	                                         {
 	                                             Articles._ID, 
 	                                             Articles.TITLE,
-	                                             Articles.URL
+	                                             Articles.PAGE_URL
 	                                         };
 	
     /** Called when the activity is first created. */
@@ -149,7 +149,7 @@ public class SpengDroid extends TabActivity
 				ContentValues cv = new ContentValues();
 				cv.put(Articles._ID, i++);
 				cv.put(Articles.TITLE, entry.getTitle());
-				cv.put(Articles.URL, entry.getUri());
+				cv.put(Articles.PAGE_URL, entry.getUri());
 				
 				_appContext.getContentResolver().insert(Articles.CONTENT_URI, cv);
     		}

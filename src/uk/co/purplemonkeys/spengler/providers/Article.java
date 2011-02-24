@@ -43,6 +43,6 @@ public class Article
          * <P>Type: TEXT</P>
          */
         public static final String TITLE = "title";
-        public static final String URL = "url";
+        public static final String PAGE_URL = "url";
     }
 }

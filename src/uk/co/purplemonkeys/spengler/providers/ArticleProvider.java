@@ -39,6 +39,7 @@ public class ArticleProvider extends ContentProvider
         sArticleProjectionMap = new HashMap<String, String>();
         sArticleProjectionMap.put(Articles._ID, Articles._ID);
         sArticleProjectionMap.put(Articles.TITLE, Articles.TITLE);
+        sArticleProjectionMap.put(Articles.PAGE_URL, Articles.PAGE_URL);
     }
 
     @Override
@@ -191,7 +192,7 @@ public class ArticleProvider extends ContentProvider
             db.execSQL("CREATE TABLE " + PROJECT_TABLE_NAME + " ("
                     + Articles._ID + " INTEGER PRIMARY KEY,"
                     + Articles.TITLE + " TEXT,"
-                    + Articles.URL + " TEXT"
+                    + Articles.PAGE_URL + " TEXT"
                     + ");");
         }
 
