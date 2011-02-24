@@ -7,8 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import uk.co.purplemonkeys.common.Common;
+import uk.co.purplemonkeys.spengler.articlefeed.ArticlesList;
 import uk.co.purplemonkeys.spengler.providers.Article.Articles;
-import android.app.Activity;
+import android.app.TabActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -16,19 +17,17 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.database.Cursor;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -37,7 +36,7 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 
-public class SpengDroid extends Activity 
+public class SpengDroid extends TabActivity 
 {
 	private final static String TAG = "SpengDroid";
 	private SharedPreferences preferences;
@@ -73,15 +72,21 @@ public class SpengDroid extends Activity
 			version_info = "Couldn't determine version info.";
 		}
 		
-        goButton = (Button) this.findViewById(R.id.goButton);
-        goButton.setOnClickListener(new OnClickListener()
-        {
-        	@Override
-        	public void onClick(View v)
-        	{
-        		getRSS();
-        	}
-        });
+	    Resources res = getResources(); // Resource object to get Drawables
+	    TabHost tabHost = getTabHost();  // The activity TabHost
+	    TabHost.TabSpec spec;  // Resusable TabSpec for each tab
+	    Intent intent;  // Reusable Intent for each tab
+
+	    // Create an Intent to launch an Activity for the tabs
+	    intent = new Intent().setClass(this, ArticlesList.class);
+
+	    // Initialize a TabSpec for each tab and add it to the TabHost
+	    spec = tabHost.newTabSpec("Feed")
+	    			.setIndicator("Feed", res.getDrawable(android.R.drawable.ic_search_category_default))
+	    				.setContent(intent);
+	    tabHost.addTab(spec);
+
+	    tabHost.setCurrentTab(1);
     }
     
     @Override

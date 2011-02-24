@@ -3,7 +3,8 @@ package uk.co.purplemonkeys.spengler.providers;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public class Article {
+public class Article 
+{
     public static final String AUTHORITY = "uk.co.purplemonkeys.spengler.providers.ArticleProvider";
 
     // This class cannot be instantiated

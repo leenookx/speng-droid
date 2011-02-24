@@ -69,9 +69,7 @@ public class ArticlesList extends ListActivity
 				taskCursor,
 				new String[] {Articles.TITLE},
 				new int[] {android.R.id.text1});
-			taskAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			ListView _spTasks = (ListView)findViewById( R.id.ArticleListView );
-			_spTasks.setAdapter( taskAdaptor );
+			setListAdapter( taskAdaptor );
 		}
 	}
 }
