@@ -17,8 +17,7 @@ public class ArticlesList extends ListActivity
 	private String[] ARTICLES_PROJECTION = new String[] 
            {
                Articles._ID, 
-               Articles.TITLE,
-               Articles.URL
+               Articles.TITLE
        	};
 	private Context _context;
 	
@@ -30,16 +29,6 @@ public class ArticlesList extends ListActivity
 		setContentView(R.layout.articles_list);
         
 		fillData();
-		
-//		listView = (ListView) this.findViewById(R.id.ListView);
-//		Cursor cur = managedQuery(Articles.CONTENT_URI, PROJECTION, null, null, null);
-//		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-//				android.R.layout.activity_list_item,
-//				cur,
-//				new String[] {Articles.TITLE},
-//				new int[] {R.id.ListView});
-//		adapter.setViewResource(android.R.layout.simple_list_item_1);
-//		listView.setAdapter(adapter);
 	}
 	
 	@Override
