@@ -27,7 +27,7 @@ public class ArticlesList extends ListActivity
 	protected void onCreate(Bundle icicle) 
 	{
 		super.onCreate(icicle);
-		setContentView(R.layout.main);
+		setContentView(R.layout.articles_list);
         
 		fillData();
 		
@@ -70,7 +70,7 @@ public class ArticlesList extends ListActivity
 				new String[] {Articles.TITLE},
 				new int[] {android.R.id.text1});
 			taskAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			ListView _spTasks = (ListView)findViewById( R.id.ListView );
+			ListView _spTasks = (ListView)findViewById( R.id.ArticleListView );
 			_spTasks.setAdapter( taskAdaptor );
 		}
 	}
