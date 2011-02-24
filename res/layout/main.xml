@@ -6,7 +6,7 @@
     >
     
     <Button android:id="@+id/goButton"
-            android:text="Go"
+            android:text="@string/update_rss_feed"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
 </LinearLayout>

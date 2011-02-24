@@ -115,16 +115,16 @@ public class SpengDroid extends Activity
     
     private void getRSS()
     {
-    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     	String url = prefs.getString("pref_url", "http://localhost:3000");
     	String auth_code = prefs.getString("pref_auth_code", "abc123");
     	
     	String rss = url + "/user/feed/" + auth_code;
     	
-    	Common.ShowErrorToast(getApplicationContext(), "Retrieving user feed", Toast.LENGTH_SHORT);
+    	Common.ShowErrorToast(this, "Retrieving user feed", Toast.LENGTH_SHORT);
     	URL feedUrl;
     	
-    	Context _appContext = getApplicationContext();
+    	Context _appContext = this;
     	
     	try
     	{

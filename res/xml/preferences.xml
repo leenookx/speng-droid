@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<EditTextPreference android:name="URL"
-	        android:summary="Where to find the Spengler installation."
+	        android:summary="@string/pref_url_summary"
 	        android:defaultValue="http://localhost:3000"
-	        android:title="URL"
+	        android:title="@string/pref_url"
 	        android:key="pref_url" />
     <EditTextPreference android:name="auth_code"
-            android:summary="Your unique authentication code."
+            android:summary="@string/pref_auth_code_summary"
             android:defaultValue="abc123"
-            android:title="Authentication Code"
+            android:title="@string/pref_auth_code"
             android:key="pref_auth_code" />
+    <ListPreference android:name="rss_update_rate"
+            android:summary="@string/pref_rss_feed_update_rate_summary"
+            android:title="@string/pref_rss_feed_update_rate"
+            android:key="pref_rss_update_rate"
+            android:defaultValue="1"
+            android:entries="@array/update_rates"
+            android:entryValues="@array/update_rates_values" />
 </PreferenceScreen>
