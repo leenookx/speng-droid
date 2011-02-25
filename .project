@@ -3,6 +3,7 @@
 	<name>SpengDroid</name>
 	<comment></comment>
 	<projects>
+		<project>PurpleMonkeyCommons</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

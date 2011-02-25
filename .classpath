@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="lib/acra-3.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="lib" path="lib/rome-1.0.jar"/>
+	<classpathentry kind="src" path="/PurpleMonkeyCommons"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
