@@ -1,8 +1,11 @@
 package uk.co.purplemonkeys.spengler;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import uk.co.purplemonkeys.common.Common;
 import uk.co.purplemonkeys.spengler.articlefeed.ArticlesList;
-import uk.co.purplemonkeys.spengler.providers.Article.Articles;
 import uk.co.purplemonkeys.spengler.tasks.FeedUpdaterTask;
 import android.app.TabActivity;
 import android.content.Intent;
@@ -16,9 +19,6 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TabHost;
 
 public class SpengDroid extends TabActivity 
@@ -26,15 +26,7 @@ public class SpengDroid extends TabActivity
 	private final static String TAG = "SpengDroid";
 	private SharedPreferences preferences;
 	private String version_info;
-	private ArrayAdapter<String> adapter = null;
-	private ListView listView;
-	private Button goButton;
-	private String[] PROJECTION = new String[] 
-	                                         {
-	                                             Articles._ID, 
-	                                             Articles.TITLE,
-	                                             Articles.PAGE_URL
-	                                         };
+	private ScheduledExecutorService ex = null;
 	
     /** Called when the activity is first created. */
     @Override
@@ -75,7 +67,8 @@ public class SpengDroid extends TabActivity
 	    
 	    // Update the RSS feed when we start the application (assuming
 	    // the current update preference setting is not 'Never'.
-	    if (preferences.getInt("rss_update_rate", 0) > 0)
+	    int RSSUpdateRate = preferences.getInt("rss_update_rate", 0);
+	    if (RSSUpdateRate > 0)
 	    {
 	    	new FeedUpdaterTask( this ).execute();
 	    }
