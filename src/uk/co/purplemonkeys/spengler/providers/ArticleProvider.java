@@ -21,7 +21,7 @@ import android.util.Log;
 public class ArticleProvider extends ContentProvider 
 {
     private static final String TAG = "ProjectProvider";
-    private static final String DATABASE_NAME = "spengler.db";
+    private static final String DATABASE_NAME = "spengdroid.db";
     private static final int DATABASE_VERSION = 1;
     private static final String PROJECT_TABLE_NAME = "articles";
     private static HashMap<String, String> sArticleProjectionMap;

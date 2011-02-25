@@ -3,7 +3,6 @@ package uk.co.purplemonkeys.spengler.articlefeed;
 import uk.co.purplemonkeys.spengler.R;
 import uk.co.purplemonkeys.spengler.providers.Article.Articles;
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -20,8 +19,6 @@ public class ArticlesList extends ListActivity
                Articles.TITLE,
                Articles.PAGE_URL
        	};
-	private Context _context;
-	
 	
 	@Override
 	protected void onCreate(Bundle icicle) 
@@ -54,7 +51,7 @@ public class ArticlesList extends ListActivity
 		}
 		else
 		{
-			SimpleCursorAdapter taskAdaptor = new SimpleCursorAdapter(_context, 
+			SimpleCursorAdapter taskAdaptor = new SimpleCursorAdapter(this, 
 				android.R.layout.simple_spinner_item,
 				taskCursor,
 				new String[] {Articles.TITLE},

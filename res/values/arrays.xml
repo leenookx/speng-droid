@@ -4,7 +4,7 @@
         <item>Never</item>
         <item>10 mins</item>
         <item>30 mins</item>
-        <item>60 mins</item>
+        <item>1 hour</item>
         <item>2 hours</item>
         <item>6 hours</item>
         <item>12 hours</item>
@@ -12,13 +12,13 @@
     </string-array>
     
     <string-array name="update_rates_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
+        <item>0</item>
+        <item>10</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>360</item>
+        <item>720</item>
+        <item>1440</item>
     </string-array>
 </resources>

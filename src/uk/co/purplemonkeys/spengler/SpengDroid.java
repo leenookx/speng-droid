@@ -1,17 +1,10 @@
 package uk.co.purplemonkeys.spengler;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-
 import uk.co.purplemonkeys.common.Common;
 import uk.co.purplemonkeys.spengler.articlefeed.ArticlesList;
 import uk.co.purplemonkeys.spengler.providers.Article.Articles;
+import uk.co.purplemonkeys.spengler.tasks.FeedUpdaterTask;
 import android.app.TabActivity;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -20,7 +13,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,13 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.Toast;
-
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
 
 public class SpengDroid extends TabActivity 
 {
@@ -87,6 +72,13 @@ public class SpengDroid extends TabActivity
 	    tabHost.addTab(spec);
 
 	    tabHost.setCurrentTab(1);
+	    
+	    // Update the RSS feed when we start the application (assuming
+	    // the current update preference setting is not 'Never'.
+	    if (preferences.getInt("rss_update_rate", 0) > 0)
+	    {
+	    	new FeedUpdaterTask( this ).execute();
+	    }
     }
     
     @Override
@@ -109,7 +101,7 @@ public class SpengDroid extends TabActivity
     			Common.ShowAlertMessage(this, version_info);
     			return true;
     		case R.id.refresh_feed_menu_id:
-    			getRSS();
+    			new FeedUpdaterTask( this ).execute();
     			return true;
 			default:
 				break;
