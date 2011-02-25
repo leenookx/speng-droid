@@ -52,7 +52,7 @@ public class ArticlesList extends ListActivity
 		else
 		{
 			SimpleCursorAdapter taskAdaptor = new SimpleCursorAdapter(this, 
-				android.R.layout.simple_spinner_item,
+				android.R.layout.activity_list_item,
 				taskCursor,
 				new String[] {Articles.TITLE},
 				new int[] {android.R.id.text1});
